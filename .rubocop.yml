@@ -1,6 +1,12 @@
 AllCops:
   TargetRubyVersion: 2.6
 
+Layout/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context', 'let'] # from rspec
+
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
@@ -8,6 +14,3 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
-
-Layout/LineLength:
-  Max: 120

@@ -7,5 +7,6 @@ gemspec
 
 # This section is for development dependencies
 gem "rake", "~> 13.0"
+gem "reek", "~> 6.0"
 gem "rspec", "~> 3.0"
 gem "rubocop", "~> 1.21"

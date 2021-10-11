@@ -9,7 +9,10 @@ Gem::Specification.new do |spec|
   spec.email         = ["matt@scilipoti.name"]
 
   spec.summary       = "Tools to help validate web pages."
-  spec.description   = "Tools to help validate web pages. Gathers validation results from multiple sources, providing a single interface for both requests and responses."
+  spec.description   = <<-DESC
+    Tools to help validate web pages.
+    Gathers validation results from multiple sources, providing a single interface for both requests and responses.
+  DESC
   spec.homepage      = "https://github.com/mattscilipoti/bashtetikn"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.6.0"

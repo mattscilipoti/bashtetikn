@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../lib/bashtetikn/page_validator_from_w3c"
 
 RSpec.describe Bashtetikn::PageValidatorFromW3C do

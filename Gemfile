@@ -6,6 +6,7 @@ source "https://rubygems.org"
 gemspec
 
 # This section is for development dependencies
+gem "pry-byebug", "~> 3.9"
 gem "rake", "~> 13.0"
 gem "reek", "~> 6.0"
 gem "rspec", "~> 3.0"

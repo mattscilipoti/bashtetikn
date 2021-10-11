@@ -1,8 +1,8 @@
 # Bashtetikn
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bashtetikn`. To experiment with that code, run `bin/console` for an interactive prompt.
+Tools to help validate web pages. Gathers validation results from multiple sources, providing a single interface for both requests and responses.
 
-TODO: Delete this and the text above, and describe your gem
+> bashtetikn: Yiddish for "To validate"
 
 ## Installation
 

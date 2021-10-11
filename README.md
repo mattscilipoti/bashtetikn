@@ -2,7 +2,9 @@
 
 Tools to help validate web pages. Gathers validation results from multiple sources, providing a single interface for both requests and responses.
 
-> bashtetikn: Yiddish for "To validate"
+> bashtetikn (Yiddish, _verb_, /bɛ-oSH-tɛk-in/): To validate, certify, or confirm
+
+![status](https://github.com/mattscilipoti/bashtetikn/actions/workflows/main.yml/badge.svg)
 
 ## Installation
 

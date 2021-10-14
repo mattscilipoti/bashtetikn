@@ -71,11 +71,11 @@ RSpec.describe Bashtetikn::HtmlValidatorFromW3C, :vcr do
 
   describe "#validate_uri" do
     def assert_no_errors(response)
-      expect(response.errors).to be_empty, response.errors.map { |e| e.to_s }.join(". ")
+      expect(response.errors).to be_empty, response.errors.map(&:to_s).join(". ")
     end
 
     def assert_no_warnings(response)
-      expect(response.warnings).to be_empty, response.warnings.map { |w| w.to_s }.join(". ")
+      expect(response.warnings).to be_empty, response.warnings.map(&:to_s).join(". ")
     end
 
     def assert_errors(response, quantity = nil)

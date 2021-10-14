@@ -24,7 +24,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+validator = Bashtetikn::HtmlValidatorFromW3C.new
+results = validator.validate_text(a_string_of_html)
+puts result.errors
+puts result.warnings
+```
+
+## Supported Validators
+
+| Content | Page | Fragment |
+| ------- | ---- | -------- |
+| HTML (W3C)   | :soon: | :white_check_mark: |
+| Accessibility (WAVE) | :soon: | :soon: |
+
 
 ## Development
 

@@ -35,7 +35,7 @@ puts result.warnings
 
 | Content | Page | Fragment |
 | ------- | ---- | -------- |
-| HTML (W3C)   | :soon: | :white_check_mark: |
+| HTML (W3C)   | :white_check_mark: | :white_check_mark: |
 | Accessibility (WAVE) | :soon: | :soon: |
 
 

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+require "vcr_helper"
 require_relative "../lib/bashtetikn/html_validator_from_w3c"
 
-RSpec.describe Bashtetikn::HtmlValidatorFromW3C do
+RSpec.describe Bashtetikn::HtmlValidatorFromW3C, :vcr do
   it "#validator is a W3CValidators::NuValidator" do
     expect(subject.validator).to be_a(W3CValidators::NuValidator)
   end
@@ -65,6 +66,39 @@ RSpec.describe Bashtetikn::HtmlValidatorFromW3C do
         expect(results.errors.length).to eql(2)
         expect(results.errors).to all(be_a(W3CValidators::Message))
       end
+    end
+  end
+
+  describe "#validate_uri" do
+    def assert_no_errors(response)
+      expect(response.errors).to be_empty, response.errors.map { |e| e.to_s }.join(". ")
+    end
+
+    def assert_no_warnings(response)
+      expect(response.warnings).to be_empty, response.warnings.map { |w| w.to_s }.join(". ")
+    end
+
+    def assert_errors(response, quantity = nil)
+      case quantity
+      when 0
+        assert_no_errors response
+      when nil
+        expect(response.errors.any?).to be false
+      else
+        expect(response.errors.length).to eql(quantity)
+      end
+    end
+
+    subject(:validator) { Bashtetikn::HtmlValidatorFromW3C.new }
+
+    it "should validate the page" do
+      # use valid page provided by w3c-validators
+      r = validator.validate_uri("https://w3c-validators.github.io/w3c_validators/valid_html5.html")
+      expect(r.doctype).to eql(:html5)
+      expect(r.uri).to eql("https://w3c-validators.github.io/w3c_validators/valid_html5.html")
+      assert_no_errors r
+      assert_no_warnings r
+      expect(r.validity).to be true
     end
   end
 end

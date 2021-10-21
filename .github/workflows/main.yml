@@ -1,9 +1,9 @@
-name: Ruby
+name: Specs
 
 on:
   push:
     branches:
-      - deploy
+      - '*'
 
   pull_request:
 

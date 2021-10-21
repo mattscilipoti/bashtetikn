@@ -6,7 +6,7 @@ Layout/LineLength:
   Max: 120
 
 Metrics/BlockLength:
-  IgnoredMethods: ['describe', 'context', 'let'] # from rspec
+  IgnoredMethods: ['describe', 'context', 'let', 'shared_examples'] # from rspec
 
 Style/StringLiterals:
   Enabled: true

@@ -3,6 +3,8 @@
 require "vcr_helper"
 require_relative "../lib/bashtetikn/html_validator_from_w3c"
 
+require "rspec/its"
+
 RSpec.describe Bashtetikn::HtmlValidatorFromW3C, :vcr do
   it "#validator is a W3CValidators::NuValidator" do
     expect(subject.validator).to be_a(W3CValidators::NuValidator)
@@ -89,16 +91,48 @@ RSpec.describe Bashtetikn::HtmlValidatorFromW3C, :vcr do
       end
     end
 
-    subject(:validator) { Bashtetikn::HtmlValidatorFromW3C.new }
+    let(:validator) { Bashtetikn::HtmlValidatorFromW3C.new }
 
-    it "should validate the page" do
+    context "(a valid page)" do
       # use valid page provided by w3c-validators
-      r = validator.validate_uri("https://w3c-validators.github.io/w3c_validators/valid_html5.html")
-      expect(r.doctype).to eql(:html5)
-      expect(r.uri).to eql("https://w3c-validators.github.io/w3c_validators/valid_html5.html")
-      assert_no_errors r
-      assert_no_warnings r
-      expect(r.validity).to be true
+      let(:uri) { "https://w3c-validators.github.io/w3c_validators/valid_html5.html" }
+      subject(:response) { validator.validate_uri(uri) }
+
+      its(:doctype) { should eql(:html5) }
+      its(:uri) { should eql(uri) }
+
+      it "should not have errors" do
+        assert_no_errors response
+      end
+
+      it "should not have warnings" do
+        assert_no_warnings response
+      end
+
+      it "should be valid" do
+        expect(response.validity).to be true
+      end
+    end
+
+    context "(an invalid page)" do
+      # use invalid page provided by w3c-validators
+      let(:uri) { "https://w3c-validators.github.io/w3c_validators/invalid_html5.html" }
+      subject(:response) { validator.validate_uri(uri) }
+
+      its(:doctype) { should eql(:html5) }
+      its(:uri) { should eql(uri) }
+
+      it "should have 2 errors" do
+        expect(response.errors.size).to eq(2)
+      end
+
+      it "should not have warnings" do
+        assert_no_warnings response
+      end
+
+      it "should NOT be valid" do
+        expect(response.validity).to be false
+      end
     end
   end
 end

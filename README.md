@@ -27,7 +27,7 @@ Or install it yourself as:
 
 ```ruby
 require 'bashtetikn'
-validator = Bashtetikn::HtmlValidatorFromW3C.new
+validator = Bashtetikn::HtmlValidator.new
 suspect_url = "https://w3c-validators.github.io/w3c_validators/invalid_html5.html"
 
 results = validator.validate_uri(suspect_url)

@@ -5,6 +5,7 @@ Tools to help validate web pages. Gathers validation results from multiple sourc
 > bashtetikn (Yiddish, _verb_, /bɛ-oSH-tɛk-in/): To validate, certify, or confirm
 
 [![Gem Version](https://badge.fury.io/rb/bashtetikn.svg)](https://badge.fury.io/rb/bashtetikn)
+![Supported Ruby Versions](https://badgen.net/badge/ruby/2.5.x-3.x?icon=ruby&color=green&labelColor=red)
 ![Spec Status](https://github.com/mattscilipoti/bashtetikn/actions/workflows/main.yml/badge.svg)
 
 ## Installation

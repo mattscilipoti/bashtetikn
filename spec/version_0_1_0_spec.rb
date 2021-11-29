@@ -4,6 +4,7 @@ require_relative "shared/shared_html_validator_specs"
 
 EXPECTED_VERSION = "0.1.0"
 
+# rubocop:disable RSpec/DescribeClass
 RSpec.describe "The installed gem (#{EXPECTED_VERSION})" do
   begin
     # test the built, installed gem
@@ -23,12 +24,13 @@ RSpec.describe "The installed gem (#{EXPECTED_VERSION})" do
   end
 
   describe Bashtetikn::HtmlValidatorFromW3C do
-    let(:validator) { Bashtetikn::HtmlValidatorFromW3C.new }
+    let(:validator) { described_class.new }
 
     it "#underlying_validator is a W3CValidators::NuValidator" do
-      expect(subject.underlying_validator).to be_a(W3CValidators::NuValidator)
+      expect(validator.underlying_validator).to be_a(W3CValidators::NuValidator)
     end
 
-    it_should_behave_like "an html validator"
+    it_behaves_like "an html validator"
   end
 end
+# rubocop:enable RSpec/DescribeClass

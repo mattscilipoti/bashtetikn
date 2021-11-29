@@ -5,15 +5,19 @@ require "rspec/its"
 
 RSpec.shared_examples "an html validator" do
   describe "#validate_text", vcr: true do
-    context "for empty text" do
+    context "with empty text" do
       it "returns 2 errors" do
         results = validator.validate_text("")
-        expect(results.errors.length).to eql(2)
+        expect(results.errors.length).to be(2)
+      end
+
+      it "returns W3CValidators::Messages" do
+        results = validator.validate_text("")
         expect(results.errors).to all(be_a(W3CValidators::Message))
       end
     end
 
-    context "for valid html" do
+    context "with valid html" do
       let(:valid_fragment) do
         <<-VALID_FRAGMENT
         <!DOCTYPE html>
@@ -34,11 +38,11 @@ RSpec.shared_examples "an html validator" do
 
       it "returns 0 errors" do
         results = validator.validate_text(valid_fragment)
-        expect(results.errors.length).to eql(0)
+        expect(results.errors.length).to be(0)
       end
     end
 
-    context "for invalid html" do
+    context "with invalid html" do
       let(:invalid_fragment) do
         <<-INVALID_FRAGMENT
         <!DOCTYPE html>
@@ -56,7 +60,11 @@ RSpec.shared_examples "an html validator" do
 
       it "returns 2 errors" do
         results = validator.validate_text(invalid_fragment)
-        expect(results.errors.length).to eql(2)
+        expect(results.errors.length).to be(2)
+      end
+
+      it "returns W3CValidators::Messages" do
+        results = validator.validate_text(invalid_fragment)
         expect(results.errors).to all(be_a(W3CValidators::Message))
       end
     end
@@ -84,44 +92,46 @@ RSpec.shared_examples "an html validator" do
 
     let(:validator) { Bashtetikn::HtmlValidatorFromW3C.new }
 
-    context "(a valid page)" do
+    context "with a valid page" do
       # use valid page provided by w3c-validators
-      let(:uri) { "https://w3c-validators.github.io/w3c_validators/valid_html5.html" }
       subject(:response) { validator.validate_uri(uri) }
 
-      its(:doctype) { should eql(:html5) }
-      its(:uri) { should eql(uri) }
+      let(:uri) { "https://w3c-validators.github.io/w3c_validators/valid_html5.html" }
 
-      it "should not have errors" do
+      its(:doctype) { is_expected.to be(:html5) }
+      its(:uri) { is_expected.to eql(uri) }
+
+      it "does not have errors" do
         assert_no_errors response
       end
 
-      it "should not have warnings" do
+      it "does not have warnings" do
         assert_no_warnings response
       end
 
-      it "should be valid" do
+      it "is valid" do
         expect(response.validity).to be true
       end
     end
 
-    context "(an invalid page)" do
+    context "with an invalid page" do
       # use invalid page provided by w3c-validators
-      let(:uri) { "https://w3c-validators.github.io/w3c_validators/invalid_html5.html" }
       subject(:response) { validator.validate_uri(uri) }
 
-      its(:doctype) { should eql(:html5) }
-      its(:uri) { should eql(uri) }
+      let(:uri) { "https://w3c-validators.github.io/w3c_validators/invalid_html5.html" }
 
-      it "should have 2 errors" do
+      its(:doctype) { is_expected.to be(:html5) }
+      its(:uri) { is_expected.to eql(uri) }
+
+      it "has 2 errors" do
         expect(response.errors.size).to eq(2)
       end
 
-      it "should not have warnings" do
+      it "does not have warnings" do
         assert_no_warnings response
       end
 
-      it "should NOT be valid" do
+      it "is not valid" do
         expect(response.validity).to be false
       end
     end

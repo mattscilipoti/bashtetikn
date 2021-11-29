@@ -4,8 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a CHANGELOG](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.1.1] - Generic validator, Multi-ruby testing
 
-## [0.1.0] - 2021-10-20
+- Add Bashtetikn::HtmlValidator << Bashtetikn::HtmlValidatorFromW3C
+- GitHub Actions test ruby 2.5, 2.6, 2.7, 3.0
+- rubocop: requires rubocop-rake & rubocop-rspec
+
+
+## [0.1.0] - 2021-10-20 Validate HTML (URI or Text)
 
 - Initial release
 - Bashtetikn::HtmlValidatorFromW3C#validate_text

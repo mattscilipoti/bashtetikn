@@ -7,15 +7,15 @@ module Bashtetikn
   class HtmlValidatorFromW3C
     # Validates html text
     def validate_text(text_to_validate)
-      validator.validate_text(text_to_validate)
+      underlying_validator.validate_text(text_to_validate)
     end
 
     def validate_uri(uri)
-      validator.validate_uri(uri)
+      underlying_validator.validate_uri(uri)
     end
 
     # The validator used to process the page
-    def validator
+    def underlying_validator
       W3CValidators::NuValidator.new
     end
   end

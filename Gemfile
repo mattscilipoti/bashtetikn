@@ -12,5 +12,7 @@ gem "reek", "~> 6.0"
 gem "rspec", "~> 3.0"
 gem "rspec-its", require: false
 gem "rubocop", "~> 1.21"
+gem "rubocop-rake", require: false
+gem "rubocop-rspec", require: false
 gem "vcr", "~> 6.0"
 gem "webmock", "3.14"

@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a CHANGELOG](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Upcoming] - Generic validator, Multi-ruby testing
+## [0.1.1] - Generic validator, Multi-ruby testing
 
 - Add Bashtetikn::HtmlValidator << Bashtetikn::HtmlValidatorFromW3C
 - GitHub Actions test ruby 2.5, 2.6, 2.7, 3.0
